@@ -42,9 +42,18 @@ public class App {
 
     }
     public static void startTimer(){
-        timer = new Timer(10000, new ActionListener() {
+        int elaTime = 30;
+        timer = new Timer(1000, new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                testOver(t.getText());
+                timer.start();
+                if (elaTime == 0) {
+                    timer.stop();
+                    testOver();
+                }
+                else{
+                    elaTime--;
+                }
+                PlayFrame.timerLabel.setText(seconds);
             }
         });
         timer.setRepeats(false);
@@ -52,6 +61,10 @@ public class App {
     }
     public static void testOver(String text){
         System.out.println(text);
+    }
+
+    public static void goodT(){
+
     }
     
 }
