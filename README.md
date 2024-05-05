@@ -5,4 +5,4 @@ Launch the program
 Begin typing to start timer
 press restart to go again
 ### Contributors
-Skills & Munky
+[Skills](https://github.com/Beetooo) & [Munky](https://github.com/MangoMunky)
