@@ -17,6 +17,7 @@ public class App implements ActionListener, KeyListener {
     static String[] words;
     static int time = 10;
 
+
     public static void main(String[] args) throws Exception {
         int width = 800, height = 550;
         f = new JFrame("Typing Test");
@@ -25,26 +26,26 @@ public class App implements ActionListener, KeyListener {
         Font font3 = new Font("Arial", Font.BOLD, 30);
 
         JLabel l1 = new JLabel("Welcome to our typing test. Press any key to start.");
-        l1.setBounds(25, 50, width - 60, 40);
+        l1.setBounds(25, 35, width - 60, 40);
         l1.setFont(font3);
 
         textArea = new JTextArea();
-        textArea.setBounds(15, 100, width - 50, 215);
+        textArea.setBounds(15, 120, width - 50, 215);
         textArea.setFont(font1);
 
         results = new JTextArea();
-        results.setBounds(15, 100, width - 50, 220);
+        results.setBounds(15, 120, width - 50, 220);
         results.setVisible(false);
         results.setFont(font1);
 
         inputBox = new JTextField();
         inputBox.setSize(width - 50, 50);
-        inputBox.setLocation(15, 345);
+        inputBox.setLocation(15, 365);
         inputBox.setFont(font2);
 
         timerLabel = new JLabel();
-        timerLabel.setBounds(15, 400, width - 50, 50);
-        timerLabel.setFont(font2);
+        timerLabel.setBounds(375, 85, width - 50, 30);
+        timerLabel.setFont(font3);
 
         JButton startButton = new JButton("Restart");
         startButton.setBounds(width / 2 - 10 - 50, height - 100, 100, 30);
@@ -127,18 +128,23 @@ public class App implements ActionListener, KeyListener {
         }
         String[] input = text.split(" ");
         for (int i = 0; i < input.length; i++) {
+            if(i>=words.length){
+                errors+=input[i].length();
+                continue;
+            }
             for (int j = 0; j < Math.min(input[i].length(), words[i].length()); j++) {
                 if (input[i].charAt(j) == words[i].charAt(j)) {
                     correct++;
                 } else
                     errors++;
             }
+        
             if (input[i].length() <= words[i].length() && i < input.length - 1)
                 errors += words[i].length() - input[i].length();
             else if (input[i].length() > words[i].length()) errors += input[i].length() - words[i].length();
         }
-        accuracy = correct / (double) (correct + errors);
-        wpm = (correct / (5.0 * time)) * 60;
+        accuracy = Math.round((correct / (double) (correct + errors)*100.0))/100.0;
+        wpm = Math.round(((correct / (5.0 * time)) * 60)*100.0)/100.0;
         textArea.setVisible(false);
         inputBox.setVisible(false);
         results.setEditable(true);
@@ -175,6 +181,7 @@ public class App implements ActionListener, KeyListener {
     }
 
     public static String[] generateWords() {
+        timerLabel.setText("10");
         int textLength = 0;
         String word;
         String[] words = new String[50];
