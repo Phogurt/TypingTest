@@ -5,6 +5,10 @@ import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
 
+public class menu implements ActionListener{
+    static 
+}
+
 public class App implements ActionListener, KeyListener {
     static Timer timer = null;
     static JTextField inputBox;
@@ -64,6 +68,7 @@ public class App implements ActionListener, KeyListener {
         f.add(inputBox);
         f.add(startButton);
         f.setSize(width, height);
+        f.setLocationRelativeTo(null);
         f.setLayout(null);
         f.setVisible(true);
         f.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
