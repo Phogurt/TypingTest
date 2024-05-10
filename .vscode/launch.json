@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Menu",
+            "request": "launch",
+            "mainClass": "Menu",
+            "projectName": "pairProgrammingProject_ee8c965e"
+        },
+        {
+            "type": "java",
+            "name": "menu",
+            "request": "launch",
+            "mainClass": "menu",
+            "projectName": "pairProgrammingProject_ee8c965e"
+        },
+        {
+            "type": "java",
             "name": "App",
             "request": "launch",
             "mainClass": "App",
