@@ -1,3 +1,4 @@
+//imports
 import javax.swing.*;
 import java.awt.Font;
 import java.awt.event.*;
@@ -5,8 +6,8 @@ import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
 
-
 public class App implements ActionListener, KeyListener {
+    //defining static variables
     static Timer timer = null;
     static JTextField inputBox;
     static JFrame f;
@@ -23,22 +24,19 @@ public class App implements ActionListener, KeyListener {
         sample=sampleText(set);
         int width = 800, height = 550;
         f = new JFrame("Typing Test");
+        //initializing fonts
         Font font1 = new Font("Arial", Font.PLAIN, 30);
         Font font2 = new Font("Arial", Font.PLAIN, 20);
         Font font3 = new Font("Arial", Font.BOLD, 30);
 
+        //setting up title
         JLabel l1 = new JLabel("Welcome to our typing test. Press any key to start.");
         l1.setBounds(25, 35, width - 60, 40);
         l1.setFont(font3);
-
+        //setting up text area
         textArea = new JTextArea();
         textArea.setBounds(15, 120, width - 50, 215);
         textArea.setFont(font1);
-
-        results = new JTextArea();
-        results.setBounds(15, 120, width - 50, 220);
-        results.setVisible(false);
-        results.setFont(font1);
 
         inputBox = new JTextField();
         inputBox.setSize(width - 50, 50);
@@ -63,7 +61,6 @@ public class App implements ActionListener, KeyListener {
 
         f.add(backButton);
         f.add(timerLabel);
-        f.add(results);
         f.add(textArea);
         f.add(l1);
         f.add(inputBox);
@@ -91,7 +88,6 @@ public class App implements ActionListener, KeyListener {
             words = generateWords();
             textArea.setVisible(true);
             inputBox.setVisible(true);
-            results.setVisible(false);
         }
         else if (button.getText()=="Back"){
             menu.main(null);
@@ -158,25 +154,16 @@ public class App implements ActionListener, KeyListener {
         }
         accuracy = Math.round((correct / (double) (correct + errors)*100.0))/100.0;
         wpm = Math.round(((correct / (5.0 * time)) * 60)*100.0)/100.0;
-        textArea.setVisible(false);
         inputBox.setVisible(false);
-        results.setEditable(true);
         String r = " WPM: " + wpm + "\n Accuracy: " + accuracy * 100 + "%";
-        System.out.println(r);
-        results.setText(r);
-        results.setEditable(false);
-        results.setVisible(true);
-        System.out.println(text);
-        System.out.println(correct);
-        System.out.println(errors);
-        System.out.println(accuracy);
-        System.out.println(wpm);
-
+        textArea.setEditable(true);
+        textArea.setText(r);
+        textArea.setEditable(false);
+        textArea.setVisible(true);
     }
 
     public static String[] sampleText(int set) {
         String[] sets={"lib\\1000commonWords.txt","lib\\5000commonWords.txt","lib\\1000spanish.txt"};
-        System.out.println(set);
         try {
             File wordsSet = new File(sets[set]);
             String[] words = new String[Integer.valueOf(sets[set].substring(4,8))];
@@ -197,7 +184,6 @@ public class App implements ActionListener, KeyListener {
     }
 
     public static String[] generateWords() {
-        timerLabel.setText(String.valueOf(time));
         int textLength = 0;
         String word;
         String[] words = new String[50];
