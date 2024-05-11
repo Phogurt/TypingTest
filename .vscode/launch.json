@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "menu",
+            "request": "launch",
+            "mainClass": "menu",
+            "projectName": "TypingTest_53af46ec"
+        },
+        {
+            "type": "java",
             "name": "Menu",
             "request": "launch",
             "mainClass": "Menu",

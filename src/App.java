@@ -19,7 +19,7 @@ public class App implements ActionListener, KeyListener {
     static String[] words;
     public static int time;
 
-
+    //This sets up the menu
     public static void game(int set) throws Exception {
         sample=sampleText(set);
         int width = 800, height = 550;
@@ -73,10 +73,11 @@ public class App implements ActionListener, KeyListener {
 
         words = generateWords();
     }
-
+    //checks if you inputed the restart button or Go back button
     public void actionPerformed(ActionEvent e) {
         // Checking if test already started so we don't start it twice
         JButton button = (JButton)e.getSource();
+        //restarts the game
         if(button.getText()=="Restart") {
             if (timer != null && timer.isRunning()) {
                 timer.stop();
@@ -89,6 +90,7 @@ public class App implements ActionListener, KeyListener {
             textArea.setVisible(true);
             inputBox.setVisible(true);
         }
+        //takes you back to the games main menu
         else if (button.getText()=="Back"){
             menu.main(null);
             f.dispose();
@@ -112,6 +114,7 @@ public class App implements ActionListener, KeyListener {
         timer.start();
     }
 
+    //makes a timer
     static class TimerListener implements ActionListener {
         int elaTime = time;
 
@@ -126,6 +129,7 @@ public class App implements ActionListener, KeyListener {
         }
     }
 
+    //prints and calculates all the typing stats
     public static void testOver(String text, String[] words) {
         KeyListener[] keyListeners = inputBox.getKeyListeners();
         int correct = 0;
@@ -162,6 +166,7 @@ public class App implements ActionListener, KeyListener {
         textArea.setVisible(true);
     }
 
+    //gets wordset from external text files
     public static String[] sampleText(int set) {
         String[] sets={"lib\\1000commonWords.txt","lib\\5000commonWords.txt","lib\\1000spanish.txt"};
         try {
@@ -182,7 +187,7 @@ public class App implements ActionListener, KeyListener {
             return error;
         }
     }
-
+    //does what the name says, generates words
     public static String[] generateWords() {
         int textLength = 0;
         String word;
