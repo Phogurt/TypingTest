@@ -1,8 +1,8 @@
-# Basic Typing Test proj
+# Basic Typing Test project
 Checks your wpm and accuracy
 ## Instructions
-Launch the program
-Begin typing to start timer
+Launch the program. 
+Begin typing to start timer, 
 press restart to go again
 ### Contributors
-[Skills](https://github.com/Beetooo) & [Munky](https://github.com/MangoMunky)
+[Beto](https://github.com/Beetooo) & [Munky](https://github.com/MangoMunky)
